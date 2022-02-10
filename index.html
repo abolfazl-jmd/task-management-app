@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Management</title>
+    <link href="http://fonts.cdnfonts.com/css/new-motor" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <script defer type="module" src="./src/js/controller.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar flex">
+        <div class="logo__wrapper flex">
+          <i class="fas fa-bars icons menu__icon"></i>
+          <h1 class="logo">Enhance</h1>
+        </div>
+        <div class="user__info flex">
+          <span class="tasks__num flex">0</span>
+          <span class="line"></span>
+          <div class="user__image flex">
+            <img src="./assets/images/user.jpeg" alt="user" class="user__img" />
+            <p class="username">abolfazl-jmd</p>
+          </div>
+        </div>
+      </nav>
+
+      <!-- -------------- SIDEBAR ------------------ -->
+      <aside class="sidebar flex close">
+        <div class="tabs__wrapper">
+          <div data-value="0" class="tab">
+            <p class="tab__icon">
+              <i class="fas fa-home icon"></i>
+            </p>
+            <span class="tab__name">Overview</span>
+          </div>
+          <div data-value="1"  class="tab">
+            <p class="tab__icon">
+              <i class="fas fa-film icon"></i>
+            </p>
+            <span class="tab__name">My Movies</span>
+          </div>
+          <div data-value="2"  class="tab">
+            <p class="tab__icon">
+              <i class="fas fa-music icon"></i>
+            </p>
+            <span class="tab__name">Music</span>
+          </div>
+          <div data-value="3"  class="tab">
+            <p class="tab__icon">
+              <i class="fas fa-shopping-cart icon"></i>
+            </p>
+            <span class="tab__name">Shopping</span>
+          </div>
+        </div>
+        <!-- ---- socials ----- -->
+        <div class="socials__wrapper">
+          <a href="https://github.com/abolfazl-jmd" target="_blank" class="social">
+            <i class="fab fa-github icon"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/abolfazl-jamshidi-051661222/" target="_blank" class="social">
+            <i class="fab fa-linkedin icon"></i>
+          </a>
+          <a href="https://www.instagram.com/abolfzl.jmd/" target="_blank" class="social">
+            <i class="fab fa-instagram icon"></i>
+          </a>
+        </div>
+      </aside>
+
+      <!-- -------------------------- Main app ---------------------- -->
+      <main class="app__wrapper">
+        <section data-value="0" class="overview__section section ">
+          <div class="quote__container">
+            <p class="quote__mark">
+              <i class="fas fa-quote-left quote__icon quote--left"></i>
+              <p class="quote"></p>
+              <i class="fas fa-quote-right quote__icon quote--right"></i>
+            </p>
+          </div>
+
+          <!-- ------------------ TASKS CONTAINER -------------------- -->
+          <div class="tasks__container">
+            <header class="tasks__header">
+              <h2 class="task__header--title">My Tasks</h2>
+              <p class="task__header--date">July, 2022</p>
+            </header>
+
+            <div class="tasks__filter">
+              <div class="search__box">
+                <i class="fas fa-search icon--search"></i>
+                <input
+                  type="search"
+                  name="search"
+                  id="search"
+                  placeholder="Search"
+                />
+              </div>
+              <div class="filter__box">
+                <span class="filter__text">Filter</span>
+                <i class="fas fa-filter icon--filter"></i>
+                <div class="filter__options">
+                  <span data-value="0" class="options">All</span>
+                  <span data-value="1" class="options">Complete</span>
+                  <span data-value="2" class="options">Incomplete</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pagination__wrapper flex">
+              <!-- <div class="page previous__page">
+                <i class="fas fa-arrow-left pagination--icon"></i>
+                <p class="previous">Page 1</p>
+              </div>
+              <div class="page next__page">
+                <p class="next">Page 3</p>
+                <i class="fas fa-arrow-right pagination--icon"></i>
+              </div> -->
+            </div>
+
+            <!-- --------- TASKS- ------------- -->
+            <div class="tasks">
+              <!-- <div class="task">
+                <span class="background"></span>
+                <div class="task__date">Feb 4, 2022</div>
+                <div class="task__details">
+                  <h3 class="task__title">Web Designing</h3>
+                  <span class="task__category">Programming</span>
+                </div>
+                <div class="task__actions">
+                  <i class="fas fa-check-square icon icon--check"></i>
+                  <i class="fas fa-trash icon icon--trash"></i>
+                </div>
+              </div> -->
+            </div>
+
+            <!-- Create task form -->
+            <div class="tasks__form">
+              <span class="form__show">
+                <i class="fas fa-arrow-up icon show__icon"></i>
+              </span>
+              <form class="task__form">
+                <h1 class="form__title">Create Your task</h1>
+
+                <div class="inputs">
+                  <label for="" class="input__label" id="task__title">Title:</label>
+                  <input type="text" class="form__input" placeholder="Web Designing" required></input>
+                  <label for="" class="input__label">Category:</label>
+                  <input type="text" class="form__input" placeholder="Work, Office, Entertainent, etc" required></input>
+                </div>
+    
+                <div class="form__btns">
+                  <button class="btn btn--submit" type="submit">Create</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- Notes wrapper -->
+          <div class="note__container">
+            <textarea id="notes" rows="20" class="notes" placeholder="Points to remember ..."></textarea>
+          </div>
+        </section>
+
+        <!-- *************************** MOVIES SECTION ************************* -->
+        <section data-value="1" class="movies__section section hidden">
+          <div class="section__cover"></div>
+          <div class="movies__wrapper flex">
+            <!-- <div class="movies">
+              <div class="movies__picture">
+                <img src="./assets/images/movie-bg-2.jpg" alt="Movie cover" class="movies__img">
+              </div>
+              <div class="movies__details">
+                <h1 class="movies__title">Avengers 2</h1>
+                <p class="movies__director">Scorsizzie</p>
+                <p class="movies__year">1990</p>
+              </div>
+            </div> -->
+          </div>
+
+          <!-- Creating movies btn -->
+          <div class="create__btn movies__btn--create">
+            <i class="fas fa-plus icons"></i>
+          </div>
+
+          <!-- Movies create form -->
+          <form class="form">
+            <h1 class="form__title">Save Your Movie</h1>
+
+            <div class="inputs">
+              <label for="" class="input__label" >Title:</label>
+              <input type="text" class="form__input" placeholder="Title" required></input>
+              <label for="" class="input__label">Director:</label>
+              <input type="text" class="form__input" placeholder="Director"></input>
+              <label for="" class="input__label">Year of the movie:</label>
+              <input type="text" class="form__input" placeholder="Year"></input>
+            </div>
+
+            <div class="form__btns">
+              <a class="btn btn--close">Cancel</a>
+              <button class="btn btn--submit" type="submit">Create</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- *********************** MUSIC SECTION ************************ -->
+        <section data-value="2" class="music__section section hidden">
+          <div class="music__cover"></div>
+          <div class="music__wrapper">
+
+            <!-- <div class="music">
+              <div class="music__info">
+                <span class="music__num">01</span>
+                <img src="./assets/images/music-bg-1.jpg" alt="song cover" class="music__img">
+                <span class="music__name">Abolfazl</span>
+                <span class="music__length">3:14</span>
+              </div>
+              <i class="fas fa-play  music--icon"></i>
+            </div> -->
+          <!-- Music Player -->
+          <div class="music__player">
+            <div class="music__image">
+              <img src="./assets/images/music-bg-1.jpg" alt="" class="music__img">
+            </div>
+            <div class="music__details">
+              <p class="music__name">abolfazl jamshidi</p>
+            </div>
+            <div class="music__player__btns">
+              <div class="btns">
+                <span class="prev__music">
+                  <i class="fas fa-backward icon"></i>
+                </span>
+                <span class="play__music">
+                  <i class="fas fa-pause icon"></i>
+                </span>
+                <span class="next__music">
+                  <i class="fas fa-forward icon"></i>
+                </span>
+              </div>
+            </div>
+            <div class="music__time">3:14</div>
+          </div>
+        </section>
+
+        <!-- ********************* SHOPPING LIST SECTION ************************* -->
+        <section data-value="3" class="section shopping__list__section hidden">
+          <h1 class="shopping__list--title">Stuff to shop later</h1>
+
+          <div class="shopping__btn--create create__btn">
+            <i class="fas fa-plus icons"></i>
+          </div>
+
+          <form class="form">
+            <h1 class="form__title">What do you want to buy?</h1>
+
+            <div class="inputs">
+              <label for="" class="input__label" >Shooping Item:</label>
+              <input type="text" class="form__input" placeholder="Fresh Vegetables" required></input>
+            </div>
+
+            <div class="form__btns">
+              <a class="btn btn--close">Cancel</a>
+              <button class="btn btn--submit" type="submit">Create</button>
+            </div>
+          </form>
+
+          <div class="lists__wrapper">
+            <!-- <div class="list">
+              <div class="list__image">
+                <img src="./assets/images/shopping-bg.svg" alt="shopping" class="list__img">
+              </div>
+              <div class="list__details">
+                <h3 class="list__title">Fresh Vegetables</h3>
+              </div>
+            </div> -->
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
