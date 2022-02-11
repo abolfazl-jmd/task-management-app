@@ -10,6 +10,7 @@ export const state = {
   movies: [],
   songs: [],
   shoppingList: [],
+  notes: "",
 };
 
 // Quote AJAX Call
@@ -29,4 +30,17 @@ export const getQuote = async function () {
   }
 };
 
-getQuote();
+// Notes function to save
+export const getNotes = function (text) {
+  state.notes = text;
+
+  // It should be stored in locale storage
+  localStorage.setItem("notes", text);
+};
+
+export const retrieveNotes = function () {
+  const notesText = localStorage.getItem("notes");
+
+  // Set it as notes
+  return notesText;
+};

@@ -63,7 +63,7 @@ html {
 .logo {
   font-size: 2rem;
   margin-left: 1.5rem;
-  font-family: var(--logo-font-family);
+  /* font-family: var(--logo-font-family); */
 }
 
 .user__info {
