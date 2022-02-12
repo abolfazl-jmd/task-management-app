@@ -1,6 +1,6 @@
 import "regenerator-runtime";
 import { RES_PER_PAGE, API_URL } from "./config.js";
-import { AJAX } from "./helpers.js";
+import { AJAX, generateID } from "./helpers.js";
 
 export let state = {
   tasks: {
@@ -70,6 +70,7 @@ export const saveTask = function (taskData) {
 
   // make the taks object
   const task = {
+    id: generateID(),
     title,
     category,
   };

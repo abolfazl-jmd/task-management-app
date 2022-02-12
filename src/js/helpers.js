@@ -1,4 +1,5 @@
 import "regenerator-runtime";
+import { v4 as uuidv4 } from "uuid";
 
 const timeout = function (s) {
   return new Promise(function (_, reject) {
@@ -17,4 +18,9 @@ export const AJAX = async function (url) {
   } catch (err) {
     throw err;
   }
+};
+
+// Generating random unique id for tasks;
+export const generateID = function () {
+  return uuidv4().slice(0, 8);
 };
