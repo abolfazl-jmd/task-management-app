@@ -439,6 +439,11 @@ html {
   z-index: 3;
 }
 
+/* Tasks done class */
+.task.complete {
+  opacity: 0.5;
+}
+
 .pagination__wrapper {
   width: 90%;
   margin: 1rem auto;

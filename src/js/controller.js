@@ -33,6 +33,15 @@ const tasksController = function (data) {
   TasksView.render(model.state.tasks.tasksList);
 };
 
+// Tasks mark complete controller
+const taskDeleteController = function (id) {
+  model.removeTask(id);
+
+  // we should rerender the tasks
+  TasksView._clear();
+  TasksView.render(model.state.tasks.tasksList);
+};
+
 const init = function () {
   TabsView.switchTabsHandler();
   // Show sidebar handler
@@ -47,6 +56,7 @@ const init = function () {
   // Tasks Handler
   TasksView.recieveTaskData(tasksController);
   TasksView.render(model.state.tasks.tasksList);
+  TasksView.taskDeleteHandler(taskDeleteController);
 };
 
 init();

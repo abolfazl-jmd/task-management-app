@@ -81,3 +81,16 @@ export const saveTask = function (taskData) {
   // Calling locale save func
   saveDataToLocale(state.tasks.tasksList, "tasks");
 };
+
+// Function to remove a task from tasksList
+export const removeTask = function (id) {
+  console.log(id);
+  // 1. Find the task
+  const taskIndex = state.tasks.tasksList.findIndex((task) => task.id === id);
+  // 2. Remove the item
+  state.tasks.tasksList.splice(taskIndex, 1);
+
+  // 3. Save to locale the new tasksList
+  // Calling locale save func
+  saveDataToLocale(state.tasks.tasksList, "tasks");
+};
