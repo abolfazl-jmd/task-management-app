@@ -6,6 +6,7 @@ import TasksDateView from "./Views/TasksDateView.js";
 import { async } from "regenerator-runtime";
 import NotesView from "./Views/NotesView.js";
 import TasksView from "./Views/TasksView.js";
+import PaginationView from "./Views/PaginationView.js";
 
 const quoteHandler = async function () {
   try {
@@ -29,8 +30,11 @@ const showRetrievedNotes = function () {
 // Tasks Controller function
 const tasksController = function (data) {
   model.saveTask(data);
-  TasksView._clear(); // In order to avoid repeated loops we need to clear out and then render
-  TasksView.render(model.state.tasks.tasksList);
+  // page
+  TasksView.render(model.getTasksPage());
+
+  // Rendering pagintion
+  PaginationView.render(model.state.tasks);
 };
 
 // Tasks mark complete controller
@@ -38,8 +42,16 @@ const taskDeleteController = function (id) {
   model.removeTask(id);
 
   // we should rerender the tasks
-  TasksView._clear();
-  TasksView.render(model.state.tasks.tasksList);
+  TasksView.render(model.getTasksPage());
+};
+
+// pagination controller
+const paginationController = function (gotoPageNum) {
+  // 1. new results should be rerendered again
+  TasksView.render(model.getTasksPage(gotoPageNum));
+
+  // 2. pagination data should be updated again
+  PaginationView.render(model.state.tasks);
 };
 
 const init = function () {
@@ -55,8 +67,12 @@ const init = function () {
 
   // Tasks Handler
   TasksView.recieveTaskData(tasksController);
-  TasksView.render(model.state.tasks.tasksList);
+  TasksView.render(model.getTasksPage());
   TasksView.taskDeleteHandler(taskDeleteController);
+
+  // Pagnation control handler
+  PaginationView.addPageHandler(paginationController);
+  PaginationView.render(model.state.tasks);
 };
 
 init();

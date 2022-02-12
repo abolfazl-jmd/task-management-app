@@ -6,6 +6,7 @@ export let state = {
   tasks: {
     tasksList: [],
     resultsPerPage: RES_PER_PAGE,
+    page: 1,
   },
   movies: [],
   songs: [],
@@ -93,4 +94,13 @@ export const removeTask = function (id) {
   // 3. Save to locale the new tasksList
   // Calling locale save func
   saveDataToLocale(state.tasks.tasksList, "tasks");
+};
+
+// Pagination page function
+export const getTasksPage = function (page = state.tasks.page) {
+  state.tasks.page = page;
+  const start = (page - 1) * state.tasks.resultsPerPage;
+  const end = page * state.tasks.resultsPerPage; // 1 * 4 = 4
+
+  return state.tasks.tasksList.slice(start, end);
 };
