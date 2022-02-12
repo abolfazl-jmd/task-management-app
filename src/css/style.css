@@ -418,11 +418,11 @@ html {
 }
 
 .icon--check {
-  left: -10%;
+  left: -20%;
 }
 
 .icon--trash {
-  right: -10%;
+  right: -20%;
 }
 
 /* Task hover */
@@ -491,6 +491,7 @@ html {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 .taskformopen {
@@ -811,6 +812,15 @@ html {
   .filter__box {
     width: 12rem;
   }
+  .tasks__form {
+    height: 8%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .tasks__form {
+    height: 12%;
+  }
 }
 
 @media screen and (min-width: 1220px) {
@@ -872,11 +882,9 @@ html {
     align-items: center;
     justify-items: center;
   }
-
   .user__img {
     width: 5rem;
   }
-
   .user__info {
     margin-right: 2.5rem;
   }
@@ -893,6 +901,10 @@ html {
   }
   .options {
     font-size: 1.5rem;
+  }
+
+  .tasks__form {
+    height: 5%;
   }
 
   .taskformopen {

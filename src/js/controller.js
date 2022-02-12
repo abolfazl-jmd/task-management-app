@@ -5,6 +5,7 @@ import QuoteView from "./Views/QuoteView.js";
 import TasksDateView from "./Views/TasksDateView.js";
 import { async } from "regenerator-runtime";
 import NotesView from "./Views/NotesView.js";
+import TasksView from "./Views/TasksView.js";
 
 const quoteHandler = async function () {
   try {
@@ -25,6 +26,13 @@ const showRetrievedNotes = function () {
   NotesView.showNotesHandler(model.retrieveNotes());
 };
 
+// Tasks Controller function
+const tasksController = function (data) {
+  model.saveTask(data);
+  TasksView._clear(); // In order to avoid repeated loops we need to clear out and then render
+  TasksView.render(model.state.tasks.tasksList);
+};
+
 const init = function () {
   TabsView.switchTabsHandler();
   // Show sidebar handler
@@ -35,6 +43,10 @@ const init = function () {
   // Notes Hnadler
   NotesView.notesHandler(notesController);
   showRetrievedNotes();
+
+  // Tasks Handler
+  TasksView.recieveTaskData(tasksController);
+  TasksView.render(model.state.tasks.tasksList);
 };
 
 init();

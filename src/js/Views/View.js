@@ -1,5 +1,19 @@
 export default class View {
   _data;
+  _months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
   render(data) {
     this._data = data;

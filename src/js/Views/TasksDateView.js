@@ -16,24 +16,9 @@ class TasksDateView extends View {
     const month = time.getMonth();
     const year = time.getFullYear();
 
-    // Month arrays
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
     // setting the text
     const tasksDate = document.querySelector(".task__header--date");
-    tasksDate.textContent = `${months[month]}, ${year}`;
+    tasksDate.textContent = `${this._months[month]}, ${year}`;
   }
 
   _showForm() {
