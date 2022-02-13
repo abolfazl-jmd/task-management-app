@@ -56,7 +56,6 @@ export const getNotes = function (text) {
 
 export const retrieveNotes = function () {
   const notesText = localStorage.getItem("notes");
-  console.log(notesText);
 
   // Set it as notes
   state.notes = notesText;
@@ -73,24 +72,12 @@ export const saveTask = function (taskData) {
     id: generateID(),
     title,
     category,
+    flag: "",
   };
 
   // Pushing the object into the array
   state.tasks.tasksList.unshift(task); // When we loop to show it it needs to be added at the begining of the array so w use unshit
 
-  // Calling locale save func
-  saveDataToLocale(state.tasks.tasksList, "tasks");
-};
-
-// Function to remove a task from tasksList
-export const removeTask = function (id) {
-  console.log(id);
-  // 1. Find the task
-  const taskIndex = state.tasks.tasksList.findIndex((task) => task.id === id);
-  // 2. Remove the item
-  state.tasks.tasksList.splice(taskIndex, 1);
-
-  // 3. Save to locale the new tasksList
   // Calling locale save func
   saveDataToLocale(state.tasks.tasksList, "tasks");
 };
@@ -102,6 +89,58 @@ export const getTasksPage = function (page = state.tasks.page) {
   const end = page * state.tasks.resultsPerPage; // 1 * 4 = 4
 
   return state.tasks.tasksList.slice(start, end);
+};
+
+// Function to remove a task from tasksList
+export const removeTask = function (id) {
+  // 1. Find the task
+  const taskIndex = state.tasks.tasksList.findIndex((task) => task.id === id);
+  // 2. Remove the item
+  state.tasks.tasksList.splice(taskIndex, 1);
+
+  // 3. Save to locale the new tasksList
+  // Calling locale save func
+  saveDataToLocale(state.tasks.tasksList, "tasks");
+};
+
+export const markCompleteTask = function (id) {
+  // find the index
+  const taskIndex = state.tasks.tasksList.findIndex((task) => task.id === id);
+  // Now, we need to attach a flag to the object
+  const task = state.tasks.tasksList.find((task) => task.id === id);
+
+  const newTask = {
+    id: id,
+    title: task.title,
+    category: task.category,
+    flag: "completed",
+  };
+
+  // replace the task with the same index
+  state.tasks.tasksList[taskIndex] = newTask;
+
+  // save to locale
+  saveDataToLocale(state.tasks.tasksList, "tasks");
+};
+
+export const unMarkCompleteTask = function (id) {
+  // find the index
+  const taskIndex = state.tasks.tasksList.findIndex((task) => task.id === id);
+  // Now, we need to attach a flag to the object
+  const task = state.tasks.tasksList.find((task) => task.id === id);
+
+  const newTask = {
+    id: id,
+    title: task.title,
+    category: task.category,
+    flag: "",
+  };
+
+  // replace the task with the same index
+  state.tasks.tasksList[taskIndex] = newTask;
+
+  // save to locale
+  saveDataToLocale(state.tasks.tasksList, "tasks");
 };
 
 // Create Movies Function

@@ -365,6 +365,7 @@ html {
   box-shadow: 0 0 1rem 0.1rem var(--accent-color);
   position: relative;
   min-height: 20rem;
+  min-width: 23rem;
 }
 
 .background {

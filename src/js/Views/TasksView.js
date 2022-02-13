@@ -6,11 +6,6 @@ class TasksView extends View {
   _tasksForm = document.querySelector(".task__form");
   _message = "There is no task. Please add one.";
 
-  constructor() {
-    super();
-    this._taskMarkCompleteHandler();
-  }
-
   recieveTaskData(handler) {
     this._tasksForm.addEventListener("submit", function (e) {
       // Prevent default reload
@@ -26,7 +21,7 @@ class TasksView extends View {
   _generateDate() {
     const date = new Date();
     const month = date.getMonth();
-    const day = date.getDay();
+    const day = date.getDate();
     const year = date.getFullYear();
 
     return `${this._months[month]} ${day}, ${year}`;
@@ -39,7 +34,9 @@ class TasksView extends View {
       return this._data
         .map((task) => {
           return `
-          <div class="task" data-id=${task.id} >
+          <div class="task ${
+            task.flag === "completed" ? "complete" : ""
+          }" data-id=${task.id} >
             <span class="background"></span>
             <div class="task__date">${this._generateDate()}</div>
             <div class="task__details">
@@ -57,7 +54,7 @@ class TasksView extends View {
     }
   }
 
-  _taskMarkCompleteHandler() {
+  taskMarkCompleteHandler(handler, unMarkHandler) {
     this._parentElement.addEventListener("click", function (e) {
       const clicked = e.target.closest(".icon--check");
 
@@ -68,8 +65,17 @@ class TasksView extends View {
       clicked.addEventListener("click", function (e) {
         const task = e.target.closest(".task");
 
-        // Adding the task done class
-        task.classList.toggle("complete");
+        // getting the element id
+        const taskID = task.dataset.id;
+
+        // here we need to check two situations => 1. It does not have the complete flag 2. It already has te complete flag
+
+        // if it does not have the flag
+        if (!task.classList.contains("complete")) {
+          handler(taskID);
+        } else {
+          unMarkHandler(taskID);
+        }
       });
     });
   }

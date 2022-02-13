@@ -45,6 +45,24 @@ const taskDeleteController = function (id) {
 
   // we should rerender the tasks
   TasksView.render(model.getTasksPage());
+
+  // we should pagination render again
+  PaginationView.render(model.state.tasks);
+};
+
+// Task mark done controller
+const taskCompleteController = function (id) {
+  model.markCompleteTask(id);
+
+  // now we need to rerender again
+  TasksView.render(model.getTasksPage());
+};
+
+const unMarkTaskController = function (id) {
+  model.unMarkCompleteTask(id);
+
+  // we should rerender again
+  TasksView.render(model.getTasksPage());
 };
 
 // pagination controller
@@ -87,6 +105,10 @@ const init = function () {
   TasksView.recieveTaskData(tasksController);
   TasksView.render(model.getTasksPage());
   TasksView.taskDeleteHandler(taskDeleteController);
+  TasksView.taskMarkCompleteHandler(
+    taskCompleteController,
+    unMarkTaskController
+  );
 
   // Pagnation control handler
   PaginationView.addPageHandler(paginationController);
