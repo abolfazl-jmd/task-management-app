@@ -10,6 +10,7 @@ import PaginationView from "./Views/PaginationView.js";
 import MoviesView from "./Views/MoviesView.js";
 import ShoppingListView from "./Views/ShoppingListView.js";
 import TasksFilterView from "./Views/TasksFilterView.js";
+import TotalTasksView from "./Views/TotalTasksView.js";
 
 const quoteHandler = async function () {
   try {
@@ -49,6 +50,9 @@ const taskDeleteController = function (id) {
 
   // we should pagination render again
   PaginationView.render(model.state.tasks);
+
+  // rerendering the total tasks num
+  TotalTasksView.render(model.getAllIncompleteTasks());
 };
 
 // Task mark done controller
@@ -57,6 +61,9 @@ const taskCompleteController = function (id) {
 
   // now we need to rerender again
   TasksView.render(model.getTasksPage());
+
+  // rerendering the total tasks num
+  TotalTasksView.render(model.getAllIncompleteTasks());
 };
 
 const unMarkTaskController = function (id) {
@@ -64,6 +71,9 @@ const unMarkTaskController = function (id) {
 
   // we should rerender again
   TasksView.render(model.getTasksPage());
+
+  // rerendering the total tasks num
+  TotalTasksView.render(model.getAllIncompleteTasks());
 };
 
 // pagination controller
@@ -136,6 +146,9 @@ const init = function () {
 
   // Filter control handler
   TasksFilterView.addFilterHandler(filterController);
+
+  // total tasks number control
+  TotalTasksView.render(model.getAllIncompleteTasks());
 };
 
 init();

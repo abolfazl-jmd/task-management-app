@@ -185,8 +185,6 @@ state.shoppingList = retrieveDataFromLocale("shoppingList") || []; // In order t
 
 // Filter tasks controller
 export const filterTasks = function (filterID) {
-  console.log(filterID);
-
   // we need to check different conditions
   // 1. if filterID was 0 => it should return ALL tasks
   // 2. if filterID was 1 => it should return COMPLETED tasks
@@ -218,4 +216,9 @@ export const getFilteredTasksPage = function (page = state.filteredTasks.page) {
   const end = page * state.filteredTasks.resultsPerPage; // 1 * 4 = 4
 
   return state.filteredTasks.tasksList.slice(start, end);
+};
+
+// show all the INCOMPLETED TASKS
+export const getAllIncompleteTasks = function () {
+  return state.tasks.tasksList.filter((task) => task.flag === "").length;
 };
