@@ -226,6 +226,7 @@ html {
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 3rem rgba(0, 0, 0, 0.3);
+  min-height: 70rem;
 }
 
 .tasks__header {
@@ -503,10 +504,6 @@ html {
   height: 50%;
 }
 
-.note__container {
-  margin: 2rem 0 0;
-}
-
 .notes {
   width: 100%;
   background: none;
@@ -516,7 +513,6 @@ html {
   resize: none;
   border: none;
   border-radius: 0.8rem;
-  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.5);
 }
 
 .notes:focus {
@@ -669,101 +665,6 @@ html {
 
 /* ****************** END OF MOVIES SECTION STYLES ********************** */
 
-/* ****************** MUSIC SECTION STYLES ********************** */
-
-.music__section {
-  overflow: hidden;
-  position: relative;
-}
-.music__cover {
-  height: 40rem;
-  background: url("../../assets/images/music-bg-3.jpg") center no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-.music__wrapper {
-  padding: 1rem 0;
-}
-
-.music {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  margin: 2rem;
-  border-radius: 0.8rem;
-  background: var(--primary-color);
-  color: var(--secondary-color);
-  border: 1px solid var(--accent-color);
-  box-shadow: 0 0 1rem var(--accent-color);
-}
-
-.music__info {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.music__num,
-.music__name,
-.music__length {
-  font-size: 1.3rem;
-}
-
-.music__img {
-  width: 8rem;
-}
-
-.music--icon {
-  display: inline-block;
-  align-self: center;
-  width: 20%;
-  text-align: center;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-
-.music__player {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  position: absolute;
-  bottom: -30%;
-  left: 0;
-  width: 100%;
-  border-radius: 3rem 3rem 0 0;
-  box-shadow: 0 0 2rem var(--accent-color);
-}
-
-.music__player .music__img {
-  width: 8rem;
-  height: 8rem;
-  border-radius: 100%;
-}
-
-.music__details {
-  flex: 1;
-  text-align: center;
-}
-.music__player__btns {
-  flex: 1;
-}
-.btns {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.music__name,
-.music__time {
-  font-size: 1.5rem;
-}
-
-/* ****************** END OF MUSIC SECTION STYLES ********************** */
-
 /* ****************** Shopping list Styles ************************** */
 
 .shopping__list__section {
@@ -903,10 +804,6 @@ html {
   }
   .user__info .line {
     height: 4rem;
-  }
-  .music__wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
   }
   .options {
     font-size: 1.5rem;

@@ -9,7 +9,6 @@ export let state = {
     page: 1,
   },
   movies: [],
-  songs: [],
   shoppingList: [],
   notes: "",
 };
