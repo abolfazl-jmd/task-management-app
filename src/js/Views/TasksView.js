@@ -74,7 +74,7 @@ class TasksView extends View {
         if (!task.classList.contains("complete")) {
           handler(taskID);
         } else {
-          unMarkHandler(taskID);
+          unMarkHandler(taskID); //It already has te complete flag
         }
       });
     });

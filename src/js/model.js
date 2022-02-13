@@ -8,6 +8,11 @@ export let state = {
     resultsPerPage: RES_PER_PAGE,
     page: 1,
   },
+  filteredTasks: {
+    tasksList: [],
+    resultsPerPage: RES_PER_PAGE,
+    page: 1,
+  },
   movies: [],
   shoppingList: [],
   notes: "",
@@ -177,3 +182,40 @@ export const createShoppingItem = function (shopItem) {
 };
 
 state.shoppingList = retrieveDataFromLocale("shoppingList") || []; // In order to avoid getting error when there is no item at locale
+
+// Filter tasks controller
+export const filterTasks = function (filterID) {
+  console.log(filterID);
+
+  // we need to check different conditions
+  // 1. if filterID was 0 => it should return ALL tasks
+  // 2. if filterID was 1 => it should return COMPLETED tasks
+  // 3. if filterID was 2 => it should return INCOMPLETED tasks
+
+  switch (filterID) {
+    case 0:
+      state.filteredTasks.tasksList = state.tasks.tasksList;
+      break;
+    case 1:
+      state.filteredTasks.tasksList = state.tasks.tasksList.filter(
+        (task) => task.flag === "completed"
+      );
+      break;
+    case 2:
+      state.filteredTasks.tasksList = state.tasks.tasksList.filter(
+        (task) => task.flag === ""
+      );
+      break;
+  }
+};
+
+// new function for get page of filtered tasks
+
+// Pagination page function
+export const getFilteredTasksPage = function (page = state.filteredTasks.page) {
+  state.filteredTasks.page = page;
+  const start = (page - 1) * state.filteredTasks.resultsPerPage;
+  const end = page * state.filteredTasks.resultsPerPage; // 1 * 4 = 4
+
+  return state.filteredTasks.tasksList.slice(start, end);
+};

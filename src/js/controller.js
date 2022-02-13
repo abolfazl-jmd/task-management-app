@@ -9,6 +9,7 @@ import TasksView from "./Views/TasksView.js";
 import PaginationView from "./Views/PaginationView.js";
 import MoviesView from "./Views/MoviesView.js";
 import ShoppingListView from "./Views/ShoppingListView.js";
+import TasksFilterView from "./Views/TasksFilterView.js";
 
 const quoteHandler = async function () {
   try {
@@ -90,6 +91,16 @@ const shoppingListController = function (data) {
   ShoppingListView.render(model.state.shoppingList);
 };
 
+// Filter Tasks Control
+const filterController = function (value) {
+  model.filterTasks(value);
+
+  // we should render the filtered tasks within taking care of pagination
+  TasksView.render(model.getFilteredTasksPage());
+
+  PaginationView.render(model.state.filteredTasks);
+};
+
 const init = function () {
   TabsView.switchTabsHandler();
   // Show sidebar handler
@@ -122,14 +133,9 @@ const init = function () {
   ShoppingListView.addShoppingHnadler(shoppingListController);
   // we should render the items
   ShoppingListView.render(model.state.shoppingList);
+
+  // Filter control handler
+  TasksFilterView.addFilterHandler(filterController);
 };
 
 init();
-
-const options = document.querySelectorAll(".options");
-
-options.forEach((option) => {
-  option.addEventListener("click", (e) => {
-    console.log(e.target.dataset.value);
-  });
-});
