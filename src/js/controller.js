@@ -113,6 +113,9 @@ const filterController = function (value) {
 };
 
 const init = function () {
+  // TasksDate
+  TasksDateView.generateTime();
+  // Tabs
   TabsView.switchTabsHandler();
   // Show sidebar handler
   SidebarView.showSidbarMenu();

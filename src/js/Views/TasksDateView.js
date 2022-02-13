@@ -1,6 +1,3 @@
-import "core-js/stable";
-("use strict");
-
 import View from "./View.js";
 
 class TasksDateView extends View {
@@ -8,18 +5,17 @@ class TasksDateView extends View {
 
   constructor() {
     super();
-    this._generateTime();
     this._showForm();
   }
 
-  _generateTime() {
+  generateTime() {
     const time = new Date();
     const month = time.getMonth();
     const year = time.getFullYear();
 
     // setting the text
     const tasksDate = document.querySelector(".task__header--date");
-    tasksDate.textContent = `${this._months[month]}, ${year}`;
+    tasksDate.innerText = `${this._months[month]}, ${year}`;
   }
 
   _showForm() {

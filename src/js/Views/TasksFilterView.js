@@ -1,4 +1,3 @@
-import "core-js/stable";
 import View from "./View.js";
 
 class TasksFilterView extends View {

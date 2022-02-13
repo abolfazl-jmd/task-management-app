@@ -22,7 +22,6 @@ class TasksView extends View {
 
       // hiding the form
       document.querySelector(".tasks__form").classList.remove("taskformopen");
-      document.querySelector(".show__icon").className = "fas fa-arrow-up icon";
       handler(taskData);
     });
   }

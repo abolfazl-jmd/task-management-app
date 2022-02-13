@@ -1,4 +1,3 @@
-import "core-js/stable";
 export default class View {
   _data;
   _months = [

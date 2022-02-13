@@ -1,4 +1,3 @@
-import "core-js/stable";
 import View from "./View.js";
 import image from "../../../assets/images/movie-bg-2.jpg";
 
