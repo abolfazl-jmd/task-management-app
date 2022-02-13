@@ -104,3 +104,21 @@ export const getTasksPage = function (page = state.tasks.page) {
 
   return state.tasks.tasksList.slice(start, end);
 };
+
+// Create Movies Function
+export const createMovie = function (movieData) {
+  const { title, director, year } = movieData;
+
+  const movie = {
+    title,
+    director,
+    year,
+  };
+
+  state.movies.unshift(movie);
+
+  // saving the movies to locale
+  saveDataToLocale(state.movies, "movies");
+};
+
+state.movies = retrieveDataFromLocale("movies") || []; // In order to avoid getting error when there is no movie at locale

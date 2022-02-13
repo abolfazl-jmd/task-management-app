@@ -7,6 +7,7 @@ import { async } from "regenerator-runtime";
 import NotesView from "./Views/NotesView.js";
 import TasksView from "./Views/TasksView.js";
 import PaginationView from "./Views/PaginationView.js";
+import MoviesView from "./Views/MoviesView.js";
 
 const quoteHandler = async function () {
   try {
@@ -54,6 +55,14 @@ const paginationController = function (gotoPageNum) {
   PaginationView.render(model.state.tasks);
 };
 
+// MOVIES CONTROLLER
+const moviesController = function (data) {
+  model.createMovie(data);
+
+  // rendering when created
+  MoviesView.render(model.state.movies);
+};
+
 const init = function () {
   TabsView.switchTabsHandler();
   // Show sidebar handler
@@ -73,6 +82,10 @@ const init = function () {
   // Pagnation control handler
   PaginationView.addPageHandler(paginationController);
   PaginationView.render(model.state.tasks);
+
+  // movies control handler
+  MoviesView.addMovieHandler(moviesController);
+  MoviesView.render(model.state.movies);
 };
 
 init();
@@ -83,16 +96,4 @@ options.forEach((option) => {
   option.addEventListener("click", (e) => {
     console.log(e.target.dataset.value);
   });
-});
-
-const moviesCreateBtn = document.querySelector(".movies__btn--create");
-const moviesForm = document.querySelector(".form");
-const moviesCloseBtn = document.querySelector(".btn--close");
-
-moviesCreateBtn.addEventListener("click", () => {
-  moviesForm.classList.add("open");
-});
-
-moviesCloseBtn.addEventListener("click", () => {
-  moviesForm.classList.remove("open");
 });

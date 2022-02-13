@@ -148,16 +148,7 @@
         <section data-value="1" class="movies__section section hidden">
           <div class="section__cover"></div>
           <div class="movies__wrapper flex">
-            <!-- <div class="movies">
-              <div class="movies__picture">
-                <img src="./assets/images/movie-bg-2.jpg" alt="Movie cover" class="movies__img">
-              </div>
-              <div class="movies__details">
-                <h1 class="movies__title">Avengers 2</h1>
-                <p class="movies__director">Scorsizzie</p>
-                <p class="movies__year">1990</p>
-              </div>
-            </div> -->
+            <!-- -->
           </div>
 
           <!-- Creating movies btn -->
@@ -166,16 +157,16 @@
           </div>
 
           <!-- Movies create form -->
-          <form class="form">
+          <form class="form movies__from">
             <h1 class="form__title">Save Your Movie</h1>
 
             <div class="inputs">
-              <label for="" class="input__label" >Title:</label>
-              <input type="text" class="form__input" placeholder="Title" required></input>
-              <label for="" class="input__label">Director:</label>
-              <input type="text" class="form__input" placeholder="Director"></input>
-              <label for="" class="input__label">Year of the movie:</label>
-              <input type="text" class="form__input" placeholder="Year"></input>
+              <label for="title" class="input__label" >Title:</label>
+              <input type="text" name="title" class="form__input" placeholder="Title" required></input>
+              <label for="director" class="input__label">Director:</label>
+              <input type="text" name="director" class="form__input" placeholder="Director"></input>
+              <label for="year" class="input__label">Year of the movie:</label>
+              <input type="number" name="year" class="form__input" placeholder="2020"></input>
             </div>
 
             <div class="form__btns">
