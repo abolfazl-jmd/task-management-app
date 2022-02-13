@@ -1,9 +1,10 @@
 import * as model from "./model.js";
+import { async } from "regenerator-runtime";
+import "core-js/stable";
 import TabsView from "./Views/TabsView";
 import SidebarView from "./Views/SidebarView.js";
 import QuoteView from "./Views/QuoteView.js";
 import TasksDateView from "./Views/TasksDateView.js";
-import { async } from "regenerator-runtime";
 import NotesView from "./Views/NotesView.js";
 import TasksView from "./Views/TasksView.js";
 import PaginationView from "./Views/PaginationView.js";

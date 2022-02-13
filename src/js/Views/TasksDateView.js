@@ -1,4 +1,5 @@
-"use strict";
+import "core-js/stable";
+("use strict");
 
 import View from "./View.js";
 

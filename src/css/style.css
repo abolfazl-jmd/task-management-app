@@ -366,6 +366,8 @@ html {
   position: relative;
   min-height: 20rem;
   min-width: 23rem;
+  max-width: 25rem;
+  max-height: 21rem;
 }
 
 .background {
@@ -395,10 +397,12 @@ html {
 
 .task__title {
   font-size: 2rem;
+  overflow-wrap: break-word;
 }
 
 .task__category {
   font-size: 1.5rem;
+  overflow-wrap: break-word;
 }
 
 .task__actions {

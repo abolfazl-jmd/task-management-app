@@ -1,3 +1,4 @@
+import "core-js/stable";
 import "regenerator-runtime";
 import { RES_PER_PAGE, API_URL } from "./config.js";
 import { AJAX, generateID } from "./helpers.js";

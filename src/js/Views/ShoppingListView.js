@@ -1,3 +1,4 @@
+import "core-js/stable";
 import View from "./View.js";
 import image from "../../../assets/images/shopping-bg.svg";
 

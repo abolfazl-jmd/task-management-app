@@ -1,5 +1,5 @@
 import View from "./View.js";
-import "core-js";
+import "core-js/stable";
 
 class TasksView extends View {
   _parentElement = document.querySelector(".tasks");
@@ -14,6 +14,15 @@ class TasksView extends View {
       // Get data
       const taskDataArr = [...new FormData(this)];
       const taskData = Object.fromEntries(taskDataArr);
+
+      // we need to empty the values
+      document
+        .querySelectorAll(".form__input")
+        .forEach((input) => (input.value = ""));
+
+      // hiding the form
+      document.querySelector(".tasks__form").classList.remove("taskformopen");
+      document.querySelector(".show__icon").className = "fas fa-arrow-up icon";
       handler(taskData);
     });
   }

@@ -1,3 +1,4 @@
+import "core-js/stable";
 import View from "./View.js";
 
 class QuoteView extends View {
