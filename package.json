@@ -2,9 +2,10 @@
   "name": "task-management",
   "version": "1.0.0",
   "description": "This is a simple app to manage daily tasks, saving movies name and shopping lists while listening to some music.",
-  "main": "index.js",
+  "default": "index.js",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "Abolfazl Jamshidi",
   "license": "ISC",
