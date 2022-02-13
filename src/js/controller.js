@@ -8,6 +8,7 @@ import NotesView from "./Views/NotesView.js";
 import TasksView from "./Views/TasksView.js";
 import PaginationView from "./Views/PaginationView.js";
 import MoviesView from "./Views/MoviesView.js";
+import ShoppingListView from "./Views/ShoppingListView.js";
 
 const quoteHandler = async function () {
   try {
@@ -63,6 +64,14 @@ const moviesController = function (data) {
   MoviesView.render(model.state.movies);
 };
 
+// Shopping List controller
+const shoppingListController = function (data) {
+  model.createShoppingItem(data);
+
+  // we should render the items
+  ShoppingListView.render(model.state.shoppingList);
+};
+
 const init = function () {
   TabsView.switchTabsHandler();
   // Show sidebar handler
@@ -86,6 +95,11 @@ const init = function () {
   // movies control handler
   MoviesView.addMovieHandler(moviesController);
   MoviesView.render(model.state.movies);
+
+  // shopping control handler
+  ShoppingListView.addShoppingHnadler(shoppingListController);
+  // we should render the items
+  ShoppingListView.render(model.state.shoppingList);
 };
 
 init();

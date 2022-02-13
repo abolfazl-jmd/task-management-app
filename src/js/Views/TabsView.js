@@ -9,6 +9,8 @@ class TabsView extends View {
     this._parentElement.addEventListener("click", (e) => {
       const clicked = e.target.closest(".tab");
 
+      if (!clicked) return;
+
       sections.forEach((section) => {
         section.classList.add("hidden");
 

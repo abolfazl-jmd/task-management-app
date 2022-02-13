@@ -806,6 +806,10 @@ html {
   font-size: 2rem;
   margin: 3rem 0;
 }
+
+.shopping__form.open {
+  transition: 0.2s ease-in;
+}
 /* ****************** End OF Shopping list Styles ************************** */
 
 /* Responsive design styles */

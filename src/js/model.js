@@ -122,3 +122,20 @@ export const createMovie = function (movieData) {
 };
 
 state.movies = retrieveDataFromLocale("movies") || []; // In order to avoid getting error when there is no movie at locale
+
+// Create shopping item
+export const createShoppingItem = function (shopItem) {
+  const { item } = shopItem;
+
+  const shoppingItem = {
+    item,
+  };
+
+  // pushing the item to state
+  state.shoppingList.unshift(shoppingItem);
+
+  // save to locale
+  saveDataToLocale(state.shoppingList, "shoppingList");
+};
+
+state.shoppingList = retrieveDataFromLocale("shoppingList") || []; // In order to avoid getting error when there is no item at locale
